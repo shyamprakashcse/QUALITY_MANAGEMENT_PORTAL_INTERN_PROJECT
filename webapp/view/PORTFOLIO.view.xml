@@ -1,0 +1,38 @@
+<mvc:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" controllerName="COM.QMPORTALQMPORTAL.controller.PORTFOLIO"
+	xmlns:html="http://www.w3.org/1999/xhtml">
+	<App>
+		<pages>
+			<Page title="Landing Page" showHeader="false">
+				<content>
+					<html:div class="bannerland"> 
+					   
+						<html:div class="leftcontent" style=" background: rgba(0,0,0,0.3);
+                          backdrop-filter: saturate(180%) blur(10px);">
+							
+                        <html:h2 style="padding-left:60px;">QUALITY MAINTENACE FOR YOUR MANUFACTURING ENTERPRISES</html:h2> 
+                        <html:br></html:br> 
+                        
+                         <html:div class="inner" >
+                         	<html:h3 style="padding-left: 10%;">This Solution Works By Providing Inspection Lot Records
+                         	  Usage Result Result Records. 
+                         	</html:h3> 
+                         	<html:br></html:br>
+                         	 <html:h3 style="padding-left: 10%;"> 
+                         The Quality Engineers can view their inspected materials and decision of 
+                         	quality of material .
+                         	It will Monitor the Status of Quality Inspection and  .</html:h3> 
+                            <html:br></html:br>
+                         	 
+                         	 <Button text="Explore Us" class="blurbtn"  press="go"></Button>
+                         </html:div>
+                         
+						</html:div>
+					</html:div> 
+					
+					
+				</content> 
+			
+			</Page>
+		</pages>
+	</App>
+</mvc:View>

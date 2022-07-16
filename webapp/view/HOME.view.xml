@@ -1,0 +1,486 @@
+<mvc:View controllerName="COM.QMPORTALQMPORTAL.controller.HOME" xmlns="sap.m" xmlns:core="sap.ui.core"
+	xmlns:form="sap.ui.layout.form" xmlns:mvc="sap.ui.core.mvc" xmlns:html="http://www.w3.org/1999/xhtml" xmlns:l="sap.ui.layout"
+	xmlns:t="sap.suite.ui.commons" 	xmlns:f="sap.f"
+	xmlns:card="sap.f.cards" xmlns:custom="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1">
+	<SplitContainer id="SplitContDemo" initialDetail="detail" initialMaster="master">
+		<detailPages>
+			<Page id="detail" title="Inspection Order Details" backgroundDesign="Solid" showNavButton="{= !${device>/system/desktop} }"
+				navButtonPress=".onPressDetailBack" showHeader="false">
+			
+				
+					<IconTabBar
+			id="idIconTabBar"
+			select=".onFilterSelect"
+			class="sapUiResponsiveContentPadding myWidth"> 
+			<items>
+	          
+				
+			      	<IconTabFilter
+			
+					icon="sap-icon://grid"
+					iconColor="Positive"
+					text="Dashboard"
+					key="dashboard" /> 
+					
+					<IconTabFilter
+			
+					icon="sap-icon://check-availability"
+					iconColor="Critical"
+					count="{cntrmodel>/Total}"
+					text="Total Inspection Records"
+					key="totalInspRec" /> 
+					
+					<IconTabFilter
+			
+					icon="sap-icon://media-forward"
+					iconColor="Positive"
+					count="{cntrmodel>/Accepted}"
+					text="Status Accepted"
+					key="accepted" /> 
+					
+					<IconTabFilter
+			
+					icon="sap-icon://media-forward"
+					iconColor="Critical"
+					count="{cntrmodel>/Saved}"
+					text="Status Saved State"
+					key="saved" /> 
+					
+					<IconTabFilter
+			
+					icon="sap-icon://media-forward"
+					iconColor="Negative"
+					count="{cntrmodel>/Rejected}"
+					text="Rejected"
+					key="rejected" /> 
+					
+					<IconTabFilter
+			
+					icon="sap-icon://log"
+					iconColor="Negative"
+				    
+					text="Log Out"
+					key="Logout" /> 
+					
+					
+			</items>
+			
+			</IconTabBar>
+				<Table id="idNotificationTable" inset="false" items="{/results}">
+					<headerToolbar>
+						<OverflowToolbar >
+							<Title text="Inspection Order Lot" level="H2"/>
+							<content>
+								<!--<ToolbarSpacer/>-->
+								<!--<SearchField liveChange=".onSearch" width="17.5rem"/>-->
+								<!--<OverflowToolbarButton icon="sap-icon://add" text="Add" type="Transparent" press=".onAdd"/>-->
+								<!--<OverflowToolbarButton icon="sap-icon://sort" text="Sort" type="Transparent" press=".onSort"/>--> 
+								       
+							</content>
+						</OverflowToolbar>
+					</headerToolbar>
+					<infoToolbar>
+						<OverflowToolbar>
+							<Label text="Received Inspection Orders and its Status"/>
+						</OverflowToolbar>
+					</infoToolbar>
+					<columns>
+						<Column width="12em">
+							<Text text="Inspection Order ID"/>
+						</Column>
+						<Column minScreenWidth="Tablet" demandPopin="true">
+							<Text text="Material"/>
+						</Column>
+						<Column minScreenWidth="Desktop" demandPopin="true" hAlign="End">
+							<Text text="Inspection Start Date"/>
+						</Column>
+						<Column minScreenWidth="Desktop" demandPopin="true" hAlign="Center">
+							<Text text="Inspection Lot Quantity"/>
+						</Column>
+						<Column minScreenWidth="Desktop" demandPopin="true" hAlign="Center">
+							<Text text="Usage Decision Status"/>
+						</Column>
+						
+						
+					</columns>
+					<items>
+						<ColumnListItem vAlign="Middle" type="Navigation" press=".onTablePress">
+							<cells>
+								<ObjectStatus class="sapUiSmallMarginBottom rose" title="" icon="sap-icon://business-card" text="{Prueflos}"/>
+								<ObjectStatus class="sapUiSmallMarginBottom blue" text="{Ktextlos}" icon="sap-icon://retail-store-manager" state="None"/>
+								<!--<Text-->
+								<!--	text="{Plantname}" /> -->
+								<ObjectStatus class="sapUiSmallMarginBottom  rose" text="{
+									          parts:[
+									            {path : 'Pastrterm' }
+									          ],
+									          formatter: '.formatter.DateConvertor'
+									}" icon="sap-icon://notes" /> 
+								
+								<ObjectStatus class="sapUiSmallMarginBottom " text="{Losmenge}" icon="sap-icon://business-objects-mobile" state="Success"/>
+								<l:VerticalLayout class="sapUiContentPadding">
+								
+								
+							
+								
+								<ObjectStatus class="sapUiSmallMarginBottom "
+								          text="{
+									          parts:[
+									            {path : 'Hpz' },
+									            {path : 'Lmenge04'},
+									            {path : 'Lmenge05'}
+									          ],
+									          formatter: '.formatter.UsageDecision'
+									}" 
+									
+									state="{
+									          parts:[
+									            {path : 'Hpz' },
+									            {path : 'Lmenge04'},
+									            {path : 'Lmenge05'}
+									          ],
+									          formatter: '.formatter.getUsageState'
+									}" 
+								 icon="sap-icon://notes" /> 
+									
+								
+									
+								</l:VerticalLayout> 
+							
+							</cells>
+						</ColumnListItem>
+					</items>
+				</Table>
+			
+			</Page>
+			
+			
+			
+			<Page id="detailDetail" title="Quality Details Order Details" backgroundDesign="Solid" 
+			showNavButton="true" navButtonPress=".onPressDetailBack" >  
+			  
+				<IconTabBar id="idIconTabBarNoIcons" expanded="{device>/isNoPhone}"
+	                           class="sapUiResponsiveContentPadding" select=".onFilterSelect">
+		  
+		  
+		<items>
+			<IconTabFilter text="Result Record" key="ResultRec" class="sapUiResponsiveContentPadding">
+				            
+				                   <VBox class="sapUiSmallMargin">
+					<!--<Label text="This is Detail Page 2" />-->
+					<!--<Text text="Here you could change the Split Application mode. After the mode change, resize the browser window to see the difference in the master form behaviour." />-->
+					<!--<Panel headerText="Upper center"> -->
+					<VBox class="sapUiSmallMargin">
+						<form:SimpleForm id="former" editable="false" layout="ResponsiveGridLayout" title="Result Recordings Detail Description" labelSpanXL="4"
+							labelSpanL="3" labelSpanM="4" labelSpanS="12" adjustLabelSpan="false" emptySpanXL="0" emptySpanL="4" emptySpanM="0" emptySpanS="0"
+							columnsXL="2" columnsL="1" columnsM="1" singleContainerFullSize="false" >
+							<form:content id="form" key="prop">
+								
+								<core:Title text="Result Recording Order Stocks Lot Information" class="blue" /> 
+								<Label text="Inspection Lot NO" class="title"/>
+								<Text id="insplotno" text="{inspmodel>/Prueflos}" class="title" />
+								<Label text="Total Inspected Quantity" class="title"/>
+								<Text id="insplot" text="{inspmodel>/Losmenge} Nos" class="title" />
+								<Label text="Actual Inspected Quantity" class="title"/>
+								<Text text="{inspmodel>/Lmengepr} Nos" class="title"/> 
+								<Label text="Unrestricted Stock Quantity" class="title"/>
+								<Text text="{inspmodel>/Lmenge01} Nos" class="title"/> 
+								<Label text="Scrap or Defective Quantity" class="title"/>
+								<Text text="{inspmodel>/Lmenge04} Nos" class="title"/>  
+								<Label text="Production Stock Quantity" class="title"/>
+								<Text text="{inspmodel>/Lmenge05} Nos" class="title"/> 
+								<Label text="Result Recording Status" class="title"/>
+								<Text text="{
+									          parts:[
+									            {path : 'inspmodel>/Hpz' }
+									            
+									          ],
+									          formatter: '.formatter.ResultRecording'
+									}" class="title blue"/> 
+								
+								
+								
+							</form:content> 
+						
+
+						</form:SimpleForm> 
+					
+					</VBox>
+					<!--	</Panel>  -->  
+				</VBox> 
+				       
+				
+			</IconTabFilter>   
+			
+			<IconTabFilter text="Inspection Details" key="InspDet" class="sapuiResponsiveContentPadding">
+				<VBox class="sapUiSmallMargin">
+					<!--<Label text="This is Detail Page 2" />-->
+					<!--<Text text="Here you could change the Split Application mode. After the mode change, resize the browser window to see the difference in the master form behaviour." />-->
+					<!--<Panel headerText="Upper center"> -->
+					<VBox class="sapUiSmallMargin">
+						<form:SimpleForm id="usagedecform" editable="false" layout="ResponsiveGridLayout" title="Inspection Order Detail Description" labelSpanXL="4"
+							labelSpanL="3" labelSpanM="4" labelSpanS="12" adjustLabelSpan="false" emptySpanXL="0" emptySpanL="4" emptySpanM="0" emptySpanS="0"
+							columnsXL="2" columnsL="1" columnsM="1" singleContainerFullSize="false" >
+							<form:content id="form" key="prop">
+								
+								<core:Title text="Inspection Order Information" class="blue" />
+								<Label text="Inspection Order NO" class="title"/>
+								<Text text="{inspmodel>/Prueflos} Nos" class="title"/>  
+								<Label text="Inspection Plant No" class="title"/>
+								<Text text="{inspmodel>/Werk} " class="title"/>  
+								<Label text="Inspection Order Start Date" class="title"/>
+								<Text text="{
+									          parts:[
+									            {path : 'inspmodel>/Pastrterm' }
+									          ],
+									          formatter: '.formatter.DateConvertor'
+									}" class="title"/>  
+								<Label text="Inspection Order End Date" class="title"/>
+								<Text text="{
+									          parts:[
+									            {path : 'inspmodel>/Paendterm' }
+									          ],
+									          formatter: '.formatter.DateConvertor'
+									}" class="title"/>  
+							</form:content> 
+						
+
+						</form:SimpleForm> 
+					
+					</VBox>
+					<!--	</Panel>  -->  
+				</VBox> 
+			</IconTabFilter>
+			
+			
+			
+		   </items>
+		
+	          </IconTabBar> 
+	          
+	          
+	     
+			     
+			  
+			  
+	        </Page>
+			
+			
+			<Page id="detail2" title="Result Recordings" backgroundDesign="Solid" 
+			showNavButton="true" navButtonPress=".onPressDetailBack">
+			  
+			 <IconTabBar
+			id="idResultIconTabBar"
+			select=".onFilterSelect"
+			class="sapUiResponsiveContentPadding myWidth"> 
+			<items>
+			
+				
+			      	<IconTabFilter
+			
+					icon="sap-icon://grid"
+					iconColor="Positive"
+					count=""
+					text="Dashboard"
+					key="dashboard" /> 
+					
+					<IconTabFilter
+			
+					icon="sap-icon://check-availability"
+					iconColor="Negative"
+					count=""
+					text="Inspection Orders"
+					key="Inspord" /> 
+					
+					
+						<IconTabFilter
+			
+					icon="sap-icon://log"
+					iconColor="Negative"
+				    
+					text="Log Out"
+					key="Logout" /> 
+					
+					
+			</items>
+			
+			</IconTabBar>
+				<Table id="idResultRecordTable" inset="false" items="{/results}">
+					<headerToolbar>
+						<OverflowToolbar >
+							<Title text="Inspection Order Lot" level="H2"/>
+							<content>
+								<!--<ToolbarSpacer/>-->
+								<!--<SearchField liveChange=".onSearch" width="17.5rem"/>-->
+								<!--<OverflowToolbarButton icon="sap-icon://add" text="Add" type="Transparent" press=".onAdd"/>-->
+								<!--<OverflowToolbarButton icon="sap-icon://sort" text="Sort" type="Transparent" press=".onSort"/>--> 
+								       
+							</content>
+						</OverflowToolbar>
+					</headerToolbar>
+					<infoToolbar>
+						<OverflowToolbar>
+							<Label text="Received Inspection Orders and its Status"/>
+						</OverflowToolbar>
+					</infoToolbar>
+					<columns>
+						<Column width="12em">
+							<Text text="Inspection Order ID"/>
+						</Column>
+						<Column minScreenWidth="Tablet" demandPopin="true">
+							<Text text="Material"/>
+						</Column>
+						<Column minScreenWidth="Desktop" demandPopin="true" hAlign="End">
+							<Text text="Result Recording"/>
+						</Column>
+							
+						
+						
+					</columns>
+					<items>
+						<ColumnListItem vAlign="Middle" type="Navigation" press=".onResultRecTabPress">
+							<cells>
+								<ObjectStatus class="sapUiSmallMarginBottom rose" title="" icon="sap-icon://business-card" text="{Prueflos}"/>
+								<ObjectStatus class="sapUiSmallMarginBottom blue" text="{Ktextlos}" icon="sap-icon://retail-store-manager" state="None"/>
+								<!--<Text-->
+								<!--	text="{Plantname}" /> -->
+								
+								
+							
+								<l:VerticalLayout class="sapUiContentPadding">
+								
+								
+							    	<l:HorizontalLayout class="sapUiContentPadding">
+							    		
+							            	<ObjectStatus text="Inspection Lot Quantity = " 
+							    	              class="sapUiResponsiveContentPadding"	
+							    	              icon="sap-icon://sys-enter-2"
+							    	              state="Error" />
+				                               
+				                                  
+							    	      <ObjectNumber 
+							    	                class="sapMObjectNumberLarge sapUiResponsiveContentPadding padleft"
+		                                            number="{Losmenge}" 
+				                                    unit=" NOS"
+		                                            emphasized="false"
+			                                        state="Success" /> 
+			                                        
+			                        </l:HorizontalLayout> 
+			                        
+			                        <l:HorizontalLayout class="sapUiContentPadding">
+							    		
+							            	<ObjectStatus text="Actual Inspected  Quantity = " 
+							    	              class="sapUiResponsiveContentPadding"	
+							    	              icon="sap-icon://sys-enter-2"
+							    	              state="Error" />
+				                               
+				                                  
+							    	      <ObjectNumber 
+							    	                class="sapMObjectNumberLarge sapUiResponsiveContentPadding padleft"
+		                                            number="{Lmengepr}" 
+				                                    unit=" NOS"
+		                                            emphasized="false"
+			                                        state="Success" /> 
+			                                        
+			                        </l:HorizontalLayout> 
+			                        
+			                        
+			                        <l:HorizontalLayout class="sapUiContentPadding">
+							    		
+							            	<ObjectStatus text="Unrestricted Stock Quantity = " 
+							    	              class="sapUiResponsiveContentPadding"	
+							    	              icon="sap-icon://sys-enter-2"
+							    	              state="Error" />
+				                               
+				                                  
+							    	      <ObjectNumber 
+							    	                class="sapMObjectNumberLarge sapUiResponsiveContentPadding padleft"
+		                                            number="{Lmenge01}" 
+				                                    unit=" NOS"
+		                                            emphasized="false"
+			                                        state="Success" /> 
+			                                        
+			                        </l:HorizontalLayout>
+			                       
+			                       
+			                          <l:HorizontalLayout class="sapUiContentPadding">
+							    		
+							            	<ObjectStatus text="Blocked Defective Stock Quantity = " 
+							    	              class="sapUiResponsiveContentPadding"	
+							    	              icon="sap-icon://sys-enter-2"
+							    	              state="Error" />
+				                               
+				                                  
+							    	      <ObjectNumber 
+							    	                class="sapMObjectNumberLarge sapUiResponsiveContentPadding padleft"
+		                                            number="{Lmenge04}" 
+				                                    unit=" NOS"
+		                                            emphasized="false"
+			                                        state="Success" /> 
+			                                        
+			                        </l:HorizontalLayout> 
+			                        
+			                        <l:HorizontalLayout class="sapUiContentPadding">
+							    		
+							            	<ObjectStatus text="Reserved/Reproductive Stock Quantity = " 
+							    	              class="sapUiResponsiveContentPadding"	
+							    	              icon="sap-icon://sys-enter-2"
+							    	              state="Error" />
+				                               
+				                                  
+							    	      <ObjectNumber 
+							    	                class="sapMObjectNumberLarge sapUiResponsiveContentPadding padleft"
+		                                            number="{Lmenge05}" 
+				                                    unit=" NOS"
+		                                            emphasized="false"
+			                                        state="Success" /> 
+			                                        
+			                        </l:HorizontalLayout> 
+			                       
+								</l:VerticalLayout> 
+							
+							
+							</cells>
+						</ColumnListItem>
+					</items>
+				</Table>
+			 
+			</Page> 
+			
+			
+			
+			
+			
+			
+			
+		</detailPages> 
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		<masterPages>
+			<Page id="master" title="Inspection Records Menus" backgroundDesign="List">
+				<List>
+					<StandardListItem title="MENU ORDER" type="Navigation" press=".onPressGoToMaster"/>
+				</List>
+			</Page>
+			<Page id="master2" title="Select the Option" backgroundDesign="List" showNavButton="true" navButtonPress=".onPressMasterBack">
+				<List itemPress=".onListItemPress">
+					<StandardListItem title="Inspection Lot Orders" type="Active" custom:to="detail"/>
+					<StandardListItem title="Result Recordings" type="Active" custom:to="detail2"/>
+					<StandardListItem title="DashBoard" type="Active" custom:to="dash"/>
+					<StandardListItem title="Explore" type="Active" custom:to="exp"/>
+					<StandardListItem title="LogOut" type="Active" custom:to="logout"/>
+				
+				</List>
+			</Page>
+		</masterPages>
+	</SplitContainer>
+</mvc:View>

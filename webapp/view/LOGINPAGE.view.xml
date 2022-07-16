@@ -1,0 +1,22 @@
+<mvc:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" controllerName="COM.QMPORTALQMPORTAL.controller.LOGINPAGE"
+	xmlns:html="http://www.w3.org/1999/xhtml">
+	<App >
+		<pages>
+			<Page title="Login" class="p1" id="page" showHeader="false">
+			
+				<html:p class="headingpara center ">Quality Maintenace  Portal System
+				</html:p>
+				<html:div class="logindiv">
+					<html:div class="left">
+						<Input placeholder="Enter Your Id" id="empid" liveChange="validateInput"></Input>
+						<Input placeholder="Enter Your Password" type="Password" id="emppass" liveChange="validatePassword"></Input>
+						<Button text="Login" class="sapUiSmallMarginBottom btn" press="login" width="280px"></Button>
+						<!--<Button text="NextPage" class="sapUiSmallMarginBottom" press="go" width="280px" ></Button>-->
+					</html:div>
+				</html:div>
+				
+				
+			</Page>
+		</pages>
+	</App>
+</mvc:View>

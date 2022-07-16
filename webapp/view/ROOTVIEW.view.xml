@@ -1,0 +1,12 @@
+<mvc:View controllerName="COM.QMPORTALQMPORTAL.controller.ROOTVIEW" xmlns:html="http://www.w3.org/1999/xhtml" xmlns:mvc="sap.ui.core.mvc"
+	displayBlock="true" xmlns="sap.m"> 
+	<Shell>
+	<App id="app"> 
+		<pages>
+			<Page title="root" id="page">
+				<content></content>
+			</Page>
+		</pages>
+	</App>
+	</Shell>
+</mvc:View>
